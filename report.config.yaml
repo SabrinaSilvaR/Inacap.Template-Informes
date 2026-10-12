@@ -1,0 +1,14 @@
+# Metadatos del informe. Se usan en la portada, el encabezado y el DOCX.
+titulo: Título del informe
+subtitulo: Subtítulo o descripción breve del trabajo
+tipo: Informe académico
+area: Nombre Área Académica
+carrera: Nombre Carrera
+asignatura: Nombre Asignatura
+codigo: ABC1234
+seccion: '001D'
+academico: Nombre del académico
+integrantes:
+    - Nombre Apellido
+    - Nombre Apellido
+fecha: Ciudad, mes de año

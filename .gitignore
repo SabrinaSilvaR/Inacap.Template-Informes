@@ -1,0 +1,23 @@
+# build output
+.reports
+dist
+*.pdf
+*.docx
+!templates/*.docx
+
+# dependencies
+node_modules
+.pnpm-store
+
+# caches
+.eslintcache
+*.log
+
+# dotenv
+.env
+.env.*
+
+# OS / IDE
+.DS_Store
+/.idea
+.vscode/*.local

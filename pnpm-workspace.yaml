@@ -1,0 +1,4 @@
+strictDepBuilds: false
+ignoredBuiltDependencies:
+    - core-js
+    - es5-ext

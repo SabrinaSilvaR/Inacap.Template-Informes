@@ -1,0 +1,42 @@
+{
+	"name": "inacap-informe",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Plantilla de informes INACAP: Markdown a PDF y DOCX",
+	"type": "module",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"scripts": {
+		"build": "node scripts/build.mjs",
+		"build:pdf": "node scripts/build.mjs --only pdf",
+		"build:docx": "node scripts/build.mjs --only docx",
+		"build:html": "node scripts/build.mjs --only html",
+		"check": "node scripts/check-pdf.mjs",
+		"lint": "eslint . --fix --cache",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@fontsource/roboto": "^5.3.0",
+		"docx": "^9.10.0",
+		"markdown-it": "^15.0.2",
+		"markdown-it-attrs": "^5.0.1",
+		"pagedjs": "^0.4.3",
+		"playwright-core": "^1.64.0",
+		"yaml": "^2.9.1"
+	},
+	"devDependencies": {
+		"eslint": "^10.12.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-perfectionist": "^5.12.1",
+		"eslint-plugin-prettier": "^5.5.6",
+		"eslint-plugin-promise": "^7.3.0",
+		"eslint-plugin-regexp": "^3.3.1",
+		"eslint-plugin-sonarjs": "^4.2.2",
+		"eslint-plugin-unicorn": "^77.0.0",
+		"globals": "^17.13.0",
+		"prettier": "^3.9.10",
+		"typescript-eslint": "^8.71.1"
+	}
+}

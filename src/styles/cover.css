@@ -1,0 +1,124 @@
+/* Portada: página completa (8.5in x 11in) sin márgenes. */
+.cover {
+	page: cover;
+	position: relative;
+	width: 8.5in;
+	height: 11in;
+	overflow: hidden;
+	background: var(--white);
+	text-align: left;
+}
+
+.cover-hero {
+	position: relative;
+	height: 4.9in;
+	padding: 1.1cm 2.5cm 0;
+	background: var(--primary-600);
+	color: var(--white);
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.cover-hero::before,
+.cover-hero::after {
+	content: '';
+	position: absolute;
+	border-radius: 50%;
+}
+.cover-hero::before {
+	width: 9cm;
+	height: 9cm;
+	right: -3cm;
+	top: -2.5cm;
+	background: var(--primary-500);
+	opacity: 0.55;
+}
+.cover-hero::after {
+	width: 5.5cm;
+	height: 5.5cm;
+	right: 2.2cm;
+	bottom: -3cm;
+	background: var(--primary-800);
+	opacity: 0.55;
+}
+
+.cover-logo {
+	position: relative;
+	z-index: 1;
+	height: 1.7cm;
+	display: block;
+}
+
+.cover-title-block {
+	position: absolute;
+	z-index: 1;
+	left: 2.5cm;
+	right: 2.5cm;
+	bottom: 1.3cm;
+}
+.cover-eyebrow {
+	margin: 0 0 0.3cm;
+	font-size: 10pt;
+	font-weight: 500;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--primary-100);
+}
+.cover-title {
+	margin: 0;
+	font-size: 34pt;
+	line-height: 1.08;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--white);
+}
+.cover-subtitle {
+	margin: 0.4cm 0 0;
+	max-width: 13cm;
+	font-size: 14pt;
+	font-weight: 300;
+	line-height: 1.3;
+	color: var(--primary-50);
+}
+
+.cover-stripe {
+	height: 0.28cm;
+	background: var(--secondary-700);
+}
+
+.cover-meta {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.55cm 1cm;
+	margin: 1.1cm 2.5cm 0;
+}
+.cover-meta .full {
+	grid-column: 1 / -1;
+}
+.cover-meta dt {
+	margin: 0;
+	font-size: 8pt;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--primary-700);
+}
+.cover-meta dd {
+	margin: 0.08cm 0 0;
+	padding-bottom: 0.15cm;
+	border-bottom: 1px solid var(--secondary-200);
+	font-size: 12pt;
+	color: var(--secondary-900);
+}
+.cover-meta dd ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cover-shapes {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 3.2cm;
+}
