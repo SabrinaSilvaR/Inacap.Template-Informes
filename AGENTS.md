@@ -35,6 +35,7 @@ un único archivo **Markdown** (`src/informe.md`), con la identidad INACAP (rojo
 ## Comandos
 
 ```bash
+pnpm start        # vista en vivo en http://localhost:3000 (recarga al guardar)
 pnpm build        # HTML + PDF + DOCX → .reports/
 pnpm build:pdf    # sólo PDF (añade -- --screenshots para PNG por página en .reports/build/)
 pnpm build:docx   # sólo DOCX

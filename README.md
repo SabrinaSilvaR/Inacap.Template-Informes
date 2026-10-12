@@ -16,6 +16,7 @@ pnpm install
 #    report.config.yaml
 # 2. Escribe el informe
 #    src/informe.md
+pnpm start        # vista en vivo: se actualiza al guardar informe.md o la config
 pnpm build        # → .reports/informe.pdf y .reports/informe.docx
 ```
 

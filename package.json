@@ -9,6 +9,8 @@
 		"pnpm": ">=10"
 	},
 	"scripts": {
+		"start": "node scripts/dev.mjs",
+		"dev": "node scripts/dev.mjs",
 		"build": "node scripts/build.mjs",
 		"build:pdf": "node scripts/build.mjs --only pdf",
 		"build:docx": "node scripts/build.mjs --only docx",
