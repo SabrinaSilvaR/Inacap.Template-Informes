@@ -1,10 +1,10 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { argv } from 'node:process';
 import { prepareAssets } from './lib/assets.mjs';
-import { loadConfig } from './lib/config.mjs';
+import { loadConfig, loadMarkdown } from './lib/config.mjs';
 import { renderDocument } from './lib/html.mjs';
-import { BUILD, OUT, SRC } from './lib/paths.mjs';
+import { BUILD, OUT } from './lib/paths.mjs';
 
 const only = argv.includes('--only')
 	? argv[argv.indexOf('--only') + 1]
@@ -16,7 +16,13 @@ const { meta, tokens } = await loadConfig();
 await mkdir(BUILD, { recursive: true });
 await prepareAssets(tokens);
 
-const markdown = await readFile(resolve(SRC, 'informe.md'), 'utf8');
+const markdown = await loadMarkdown();
+const pending = [...markdown.matchAll(/^# (.+)\n+<!--\s*PENDIENTE/gmu)].map(
+	(match) => match[1],
+);
+if (pending.length > 0) {
+	console.warn(`⚠ Secciones pendientes: ${pending.join(' · ')}`);
+}
 await writeFile(resolve(BUILD, 'index.html'), renderDocument(markdown, meta));
 console.info(`HTML  → ${resolve(BUILD, 'index.html')}`);
 

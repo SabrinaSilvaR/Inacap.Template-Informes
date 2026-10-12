@@ -79,7 +79,7 @@ export async function buildDocx(markdown, meta, tokens, outFile) {
 	const color = flatColors(tokens);
 	const raster = await createRasterizer();
 	try {
-		const body = await convertBody(markdown, color, raster);
+		const body = await convertBody(markdown, color, raster, meta);
 		const logoWhite = await raster.rasterize(
 			resolve(SRC, 'assets/inacap-logo-white.svg'),
 			320,
@@ -460,8 +460,8 @@ function buildFooter(color) {
 }
 
 /** markdown-it tokens -> docx block elements. */
-async function convertBody(markdown, color, raster) {
-	const md = createMarkdown();
+async function convertBody(markdown, color, raster, meta) {
+	const md = createMarkdown(meta);
 	const tokens = md.parse(markdown, {});
 	const children = [];
 	const numbering = [
@@ -841,6 +841,11 @@ function convertInline(tokens, base, color) {
 				break;
 			case 'softbreak':
 				push(' ');
+				break;
+			case 'html_inline':
+				if (/^<br\s*\/?>$/u.test(token.content)) {
+					runs.push(new TextRun({ break: 1 }));
+				}
 				break;
 			case 'hardbreak':
 				runs.push(new TextRun({ break: 1 }));

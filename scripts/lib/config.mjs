@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { parse } from 'yaml';
 import { ROOT, SRC } from './paths.mjs';
@@ -42,4 +42,22 @@ export function flatColors(tokens) {
 		}
 	}
 	return out;
+}
+
+/** Concatenate src/secciones/NN-*.md in numeric order (falls back to src/informe.md). */
+export async function loadMarkdown() {
+	const dir = resolve(SRC, 'secciones');
+	let files = [];
+	try {
+		files = (await readdir(dir))
+			.filter((name) => name.endsWith('.md'))
+			.sort();
+	} catch {
+		// no secciones/ folder: single-file report
+	}
+	if (files.length === 0) return readFile(resolve(SRC, 'informe.md'), 'utf8');
+	const parts = await Promise.all(
+		files.map((name) => readFile(resolve(dir, name), 'utf8')),
+	);
+	return parts.map((part) => part.trim()).join('\n\n');
 }

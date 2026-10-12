@@ -1,14 +1,21 @@
 # Metadatos del informe. Se usan en la portada, el encabezado y el DOCX.
-titulo: Título del informe
-subtitulo: Subtítulo o descripción breve del trabajo
-tipo: Informe académico
-area: Nombre Área Académica
-carrera: Nombre Carrera
-asignatura: Nombre Asignatura
-codigo: ABC1234
-seccion: '001D'
-academico: Nombre del académico
+titulo: Sistema de Gestión de Biblioteca INACAP
+subtitulo: Implementación, pruebas y calidad de software
+tipo: Evaluación 3 · Unidad 3
+area: Por definir (área académica)
+carrera: Por definir (carrera)
+asignatura: Ingeniería de Software
+codigo: TI3V43
+seccion: Por definir
+academico: Por definir
 integrantes:
-    - Nombre Apellido
-    - Nombre Apellido
-fecha: Ciudad, mes de año
+    - Pablo Herrera
+    - Jesús Rincón
+    - Sabrina Silva
+    - Abraham Tapia
+fecha: Por definir
+
+# Numeración de títulos: 'romano' (I., II.…) o 'arabigo' (2., 2.1…).
+# capitulo_inicial: número del primer capítulo (el ítem 1 es la portada).
+numeracion: arabigo
+capitulo_inicial: 2

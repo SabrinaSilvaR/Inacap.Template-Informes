@@ -1,8 +1,13 @@
-# Redactar `src/informe.md`
+# Redactar el informe
 
-- `# Título` = capítulo (salto de página, numeración romana automática: I., II.…).
+- El contenido va en `src/secciones/NN-*.md` (un archivo por capítulo, orden por prefijo
+  numérico). Si no existe esa carpeta, se usa `src/informe.md`.
+- La numeración se configura en `report.config.yaml`: `numeracion: arabigo | romano` y
+  `capitulo_inicial` (primer número de capítulo).
+
+- `# Título` = capítulo (salto de página; numeración automática según `numeracion`).
   `# Anexos {.sin-numero}` lo deja sin número.
-- `## Título` = subcapítulo (numeración 1., 2.… que se reinicia por capítulo). `###` sin número.
+- `## Título` = subcapítulo (numeración automática: `7.1`, `7.2`… en modo arábigo). `###` sin número.
 - **Índice automático** a partir de `#` y `##`; no lo escribas a mano.
 - Tablas Markdown estándar: encabezado rojo oscuro con texto blanco. Antes de la tabla, una
   línea que la introduzca; después, la fuente si no es propia.

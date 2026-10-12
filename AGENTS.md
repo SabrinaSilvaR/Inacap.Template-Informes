@@ -49,7 +49,7 @@ pnpm format       # Prettier --write
 ```
 .
 ├─ report.config.yaml      # metadatos de portada/encabezado
-├─ src/informe.md          # el informe
+├─ src/secciones/*.md      # el informe, un archivo por ítem (NN-nombre.md; 99 = referencias)
 ├─ src/tokens.json         # marca: única fuente de verdad de colores/fuentes
 ├─ src/styles/             # fonts.css · print.css · cover.css
 ├─ src/assets/             # logos INACAP + imágenes del informe

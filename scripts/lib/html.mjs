@@ -70,7 +70,7 @@ function wrapSections(html) {
 
 /** Full HTML document of the report. */
 export function renderDocument(markdown, meta) {
-	const md = createMarkdown();
+	const md = createMarkdown(meta);
 	const env = {};
 	const body = md.render(markdown, env);
 	const header = `

@@ -5,7 +5,7 @@ import { createServer } from 'node:http';
 import { extname, resolve } from 'node:path';
 import { argv, platform } from 'node:process';
 import { prepareAssets } from './lib/assets.mjs';
-import { loadConfig } from './lib/config.mjs';
+import { loadConfig, loadMarkdown } from './lib/config.mjs';
 import { renderDocument } from './lib/html.mjs';
 import { BUILD, ROOT, SRC } from './lib/paths.mjs';
 
@@ -70,7 +70,7 @@ async function rebuild() {
 	const { meta, tokens } = await loadConfig();
 	await mkdir(BUILD, { recursive: true });
 	await prepareAssets(tokens);
-	const markdown = await readFile(resolve(SRC, 'informe.md'), 'utf8');
+	const markdown = await loadMarkdown();
 	await writeFile(
 		resolve(BUILD, 'index.html'),
 		renderDocument(markdown, meta),

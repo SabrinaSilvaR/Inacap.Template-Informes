@@ -55,10 +55,13 @@ function figureRule(state) {
 	}
 }
 
-/** Number h1 (roman) and h2 (1., 2.…), build ids and the TOC list. */
-function numberingRule(state) {
+/**
+ * Number h1 and h2, build ids and the TOC list.
+ * mode 'romano' (default): I. / 1.   mode 'arabigo': 2. / 2.1 (start = first chapter number).
+ */
+function numberingRule(state, { mode = 'romano', start = 1 } = {}) {
 	const toc = [];
-	let chapter = 0;
+	let chapter = start - 1;
 	let section = 0;
 	const { tokens } = state;
 	for (let index = 0; index < tokens.length; index++) {
@@ -77,9 +80,19 @@ function numberingRule(state) {
 		let label = '';
 		if (level === 1) {
 			section = 0;
-			if (numbered) label = `${toRoman(++chapter)}.`;
+			if (numbered) {
+				chapter++;
+				label =
+					mode === 'arabigo' ? `${chapter}.` : `${toRoman(chapter)}.`;
+			}
 		} else if (numbered) {
-			label = `${++section}.`;
+			{
+				section++;
+				label =
+					mode === 'arabigo'
+						? `${chapter}.${section}`
+						: `${section}.`;
+			}
 		}
 		const id = `${level === 1 ? 'sec' : 'sub'}-${slugify(title)}`;
 		token.attrSet('id', id);
@@ -90,11 +103,17 @@ function numberingRule(state) {
 }
 
 /** Build a markdown-it instance with the report rules installed. */
-export function createMarkdown() {
+export function createMarkdown(meta = {}) {
+	const numbering = {
+		mode: meta.numeracion,
+		start: meta.capitulo_inicial,
+	};
 	const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
 	md.use(attrs);
 	md.core.ruler.push('report_figure', figureRule);
-	md.core.ruler.push('report_numbering', numberingRule);
+	md.core.ruler.push('report_numbering', (state) =>
+		numberingRule(state, numbering),
+	);
 
 	md.renderer.rules.heading_open = (tokens, index, options, _env, self) => {
 		const { label } = tokens[index].meta ?? {};
