@@ -102,6 +102,42 @@ function numberingRule(state, { mode = 'romano', start = 1 } = {}) {
 	state.env.toc = toc;
 }
 
+const ID_PATTERN = /\b(?:RNF|RF|RN|CP|H|R|C)-\d{2}\b/gu;
+
+/** Keep requirement/test IDs (RF-01, CP-12…) on one line: wrap them in a nowrap span. */
+function nowrapIdsRule(state) {
+	for (const block of state.tokens) {
+		if (block.type !== 'inline' || !block.children) continue;
+		const out = [];
+		for (const child of block.children) {
+			if (child.type !== 'text' || !child.content.match(ID_PATTERN)) {
+				out.push(child);
+				continue;
+			}
+			let last = 0;
+			for (const match of child.content.matchAll(ID_PATTERN)) {
+				const push = (type, content) => {
+					const token = new state.Token(type, '', 0);
+					token.content = content;
+					out.push(token);
+				};
+				if (match.index > last)
+					push('text', child.content.slice(last, match.index));
+				push('html_inline', '<span class="id">');
+				push('text', match[0]);
+				push('html_inline', '</span>');
+				last = match.index + match[0].length;
+			}
+			if (last < child.content.length) {
+				const token = new state.Token('text', '', 0);
+				token.content = child.content.slice(last);
+				out.push(token);
+			}
+		}
+		block.children = out;
+	}
+}
+
 /** Build a markdown-it instance with the report rules installed. */
 export function createMarkdown(meta = {}) {
 	const numbering = {
@@ -111,6 +147,7 @@ export function createMarkdown(meta = {}) {
 	const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
 	md.use(attrs);
 	md.core.ruler.push('report_figure', figureRule);
+	md.core.ruler.push('report_ids', nowrapIdsRule);
 	md.core.ruler.push('report_numbering', (state) =>
 		numberingRule(state, numbering),
 	);

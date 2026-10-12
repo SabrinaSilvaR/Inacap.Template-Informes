@@ -43,7 +43,7 @@ html {
 
 body {
 	margin: 0;
-	line-height: 1.35;
+	line-height: 1.3;
 	text-align: justify;
 	hyphens: auto;
 }
@@ -108,7 +108,7 @@ li {
 	text-align-last: left;
 }
 p {
-	margin: 0 0 0.35cm;
+	margin: 0 0 0.28cm;
 	orphans: 3;
 	widows: 3;
 }
@@ -160,11 +160,14 @@ table {
 	table-layout: auto;
 	border-collapse: collapse;
 	margin: 0.4cm 0;
-	font-size: 8.5pt;
-	line-height: 1.25;
+	font-size: 8pt;
+	line-height: 1.2;
 	text-align: left;
 	overflow-wrap: break-word;
 	hyphens: manual;
+}
+.id {
+	white-space: nowrap;
 }
 td:first-child {
 	white-space: nowrap;
@@ -179,12 +182,12 @@ th {
 	background: var(--primary-800);
 	color: var(--white);
 	font-weight: 500;
-	padding: 0.12cm 0.15cm;
+	padding: 0.08cm 0.12cm;
 	border: 0.5pt solid var(--secondary-300);
 	vertical-align: middle;
 }
 td {
-	padding: 0.1cm 0.15cm;
+	padding: 0.06cm 0.12cm;
 	border: 0.5pt solid var(--secondary-300);
 	vertical-align: top;
 }
