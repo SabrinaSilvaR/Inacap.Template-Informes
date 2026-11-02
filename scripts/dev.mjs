@@ -6,6 +6,7 @@ import { extname, resolve } from 'node:path';
 import { argv, platform } from 'node:process';
 import { prepareAssets } from './lib/assets.mjs';
 import { loadConfig, loadMarkdown } from './lib/config.mjs';
+import { renderDiagrams } from './lib/diagrams.mjs';
 import { renderDocument } from './lib/html.mjs';
 import { BUILD, ROOT, SRC } from './lib/paths.mjs';
 
@@ -69,6 +70,7 @@ const notify = (event, data = '') => {
 async function rebuild() {
 	const { meta, tokens } = await loadConfig();
 	await mkdir(BUILD, { recursive: true });
+	await renderDiagrams(tokens);
 	await prepareAssets(tokens);
 	const markdown = await loadMarkdown();
 	await writeFile(

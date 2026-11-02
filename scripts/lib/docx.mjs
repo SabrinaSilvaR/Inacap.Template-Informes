@@ -359,7 +359,10 @@ function buildCover(meta, color, logoWhite) {
 			rows: [hero, stripe],
 			width: { size: PAGE_WIDTH, type: WidthType.DXA },
 		}),
-		...field('Asignatura', `${meta.asignatura} · ${meta.codigo}`),
+		...field(
+			'Asignatura',
+			[meta.asignatura, meta.codigo].filter(Boolean).join(' · '),
+		),
 		...field('Sección', meta.seccion),
 		...field('Académico', meta.academico),
 		...field('Integrantes', meta.integrantes ?? []),
@@ -400,12 +403,19 @@ function buildHeader(meta, color, logo) {
 							new TableCell({
 								borders: noBorders,
 								children: [
-									line(meta.area),
-									line(meta.carrera),
-									line(`${meta.asignatura}-${meta.codigo}`, {
-										bold: true,
-										color: color['primary-700'],
-									}),
+									...(meta.area ? [line(meta.area)] : []),
+									...(meta.carrera
+										? [line(meta.carrera)]
+										: []),
+									line(
+										[meta.asignatura, meta.codigo]
+											.filter(Boolean)
+											.join('-'),
+										{
+											bold: true,
+											color: color['primary-700'],
+										},
+									),
 								],
 								width: { size: left, type: WidthType.DXA },
 							}),

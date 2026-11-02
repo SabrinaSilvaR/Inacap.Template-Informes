@@ -1,0 +1,14 @@
+sequenceDiagram
+    autonumber
+    actor Usuario as Usuario / Cliente
+    participant UI as Interfaz (Frontend)
+    participant API as API Backend
+    participant BD as Base de Datos
+
+    Usuario->>UI: 1. Ingresa datos o solicita operación
+    UI->>API: 2. Envía petición HTTP POST con carga útil
+    API->>API: 3. Valida credenciales y reglas de negocio
+    API->>BD: 4. Ejecuta transacción o consulta SQL
+    BD-->>API: 5. Retorna confirmación de persistencia
+    API-->>UI: 6. Responde código 200 OK con payload JSON
+    UI-->>Usuario: 7. Muestra confirmación exitosa en pantalla

@@ -2,3 +2,6 @@ strictDepBuilds: false
 ignoredBuiltDependencies:
     - core-js
     - es5-ext
+allowBuilds:
+    core-js: set this to true or false
+    es5-ext: set this to true or false

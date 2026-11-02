@@ -89,5 +89,6 @@ p. ej. `feat(cover) ✨: portada con bloque rojo` o `fix(toc) 🐛: corrige nume
 | [BRAND.md](BRAND.md)                               | Paleta, tipografía, logo, portada, AA        |
 | [SDD informe](.ai/skills/sdd-informe.md)           | Loop brief → esquema → redacción → verificar |
 | [Redacción](.ai/skills/report-authoring.md)        | Sintaxis Markdown del informe                |
+| [Diagramas](.ai/skills/flowchart-diagrams.md)      | Modelado y diseño de diagramas con Mermaid   |
 | [Export y build](.ai/skills/export-build.md)       | PDF/DOCX, depuración de paginación           |
 | [README](README.md)                                | Puesta en marcha                             |

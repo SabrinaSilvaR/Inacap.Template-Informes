@@ -33,7 +33,7 @@ export function renderCover(meta, header = '') {
 	</div>
 	<div class="cover-stripe"></div>
 	<dl class="cover-meta">
-		<div class="full"><dt>Asignatura</dt><dd>${esc(meta.asignatura)} · ${esc(meta.codigo)}</dd></div>
+		<div class="full"><dt>Asignatura</dt><dd>${esc([meta.asignatura, meta.codigo].filter(Boolean).join(' · '))}</dd></div>
 		<div><dt>Sección</dt><dd>${esc(meta.seccion)}</dd></div>
 		<div><dt>Académico</dt><dd>${esc(meta.academico)}</dd></div>
 		<div><dt>Integrantes</dt><dd><ul>${integrantes}</ul></dd></div>
@@ -75,9 +75,9 @@ export function renderDocument(markdown, meta) {
 	const body = md.render(markdown, env);
 	const header = `
 <div class="running-header">
-	<div>${esc(meta.area)}</div>
-	<div>${esc(meta.carrera)}</div>
-	<div><strong>${esc(meta.asignatura)}-${esc(meta.codigo)}</strong></div>
+	${meta.area ? `<div>${esc(meta.area)}</div>` : ''}
+	${meta.carrera ? `<div>${esc(meta.carrera)}</div>` : ''}
+	<div><strong>${esc([meta.asignatura, meta.codigo].filter(Boolean).join('-'))}</strong></div>
 </div>`;
 	return `<!doctype html>
 <html lang="es-CL">

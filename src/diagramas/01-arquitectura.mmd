@@ -1,0 +1,25 @@
+flowchart TD
+    subgraph Frontend["Capa de Presentación (Frontend)"]
+        UI["Interfaz de Usuario (SPA / Web Responsive)"]
+        State["Manejo de Estado y Rutas"]
+        UI --> State
+    end
+
+    subgraph Backend["Capa de Lógica y Servicios (Backend)"]
+        API["API Gateway / Endpoints REST"]
+        Auth["Controlador de Autenticación y Autorización"]
+        Service["Servicios de Dominio y Lógica de Negocio"]
+        API --> Auth
+        Auth --> Service
+    end
+
+    subgraph Data["Capa de Persistencia y Almacenamiento"]
+        ORM["Mapeo Objeto-Relacional (ORM)"]
+        DB[("Base de Datos Relacional / NoSQL")]
+        Cache[("Caché en Memoria (Redis)")]
+        ORM --> DB
+        Service --> ORM
+        Service --> Cache
+    end
+
+    State -->|"HTTPS / JSON (Tokens JWT)"| API

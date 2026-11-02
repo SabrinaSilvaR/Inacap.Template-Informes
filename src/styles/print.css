@@ -103,8 +103,15 @@ h1.toc-title {
 li {
 	text-align: left;
 }
+h1,
+h2,
+h3,
+h4,
 p,
-li {
+li,
+th,
+td,
+blockquote {
 	text-align-last: left;
 }
 p {
@@ -169,9 +176,6 @@ table {
 .id {
 	white-space: nowrap;
 }
-td:first-child {
-	white-space: nowrap;
-}
 tr {
 	break-inside: avoid;
 }
@@ -204,6 +208,9 @@ figure {
 figure img,
 p > img {
 	max-width: 100%;
+	max-height: 19cm;
+	width: auto;
+	height: auto;
 }
 figcaption {
 	font-size: 9pt;
@@ -274,4 +281,47 @@ li::marker {
 
 .sin-salto {
 	break-before: auto;
+}
+
+/* Tabla corta que debe quedar completa en una sola página (añadir {.keep-together} tras la tabla) */
+.keep-together {
+	break-inside: avoid;
+}
+
+/* Imagen que debe caber en lo que queda de página junto a su pie (añadir {.img-compacta}) */
+figure img.img-compacta {
+	max-height: 15cm;
+}
+
+/* En tablas, el código largo (rutas, nombres de archivo) puede partirse para no desbordar */
+td code,
+th code {
+	overflow-wrap: anywhere;
+}
+
+figure img.img-h16 {
+	max-height: 16cm;
+}
+figure img.img-h12 {
+	max-height: 12cm;
+}
+
+figure img.img-h14 {
+	max-height: 14cm;
+}
+
+figure img.img-h10 {
+	max-height: 10cm;
+}
+
+figure img.img-h5 {
+	max-height: 5.2cm;
+}
+
+figure img.img-h9 {
+	max-height: 9cm;
+}
+
+figure img.img-h11 {
+	max-height: 10.2cm;
 }

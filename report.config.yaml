@@ -1,21 +1,21 @@
-# Metadatos del informe. Se usan en la portada, el encabezado y el DOCX.
-titulo: Sistema de Gestión de Biblioteca INACAP
-subtitulo: Implementación, pruebas y calidad de software
-tipo: Evaluación 3 · Unidad 3
-area: Por definir (área académica)
-carrera: Por definir (carrera)
-asignatura: Ingeniería de Software
-codigo: TI3V43
-seccion: Por definir
-academico: Por definir
+# Metadatos del informe institucional INACAP.
+# Estos valores se utilizan automáticamente en la portada, encabezados y documento exportado.
+titulo: Plantilla Oficial de Informes INACAP
+subtitulo: Estructura estándar en Markdown para la generación de documentos técnicos, académicos y profesionales
+tipo: Informe Técnico · Evaluación Sumativa
+area: Tecnologías de la Información y Ciberseguridad
+carrera: Ingeniería en Informática
+asignatura: Nombre de la Asignatura
+codigo: INF-101
+seccion: Sección 001D
+academico: Profesor Guía / Docente Evaluador
 integrantes:
-    - Pablo Herrera
-    - Jesús Rincón
-    - Sabrina Silva
-    - Abraham Tapia
-fecha: Por definir
+    - Nombre y Apellido Estudiante 1
+    - Nombre y Apellido Estudiante 2
+    - Nombre y Apellido Estudiante 3
+fecha: 01-11-2026
 
 # Numeración de títulos: 'romano' (I., II.…) o 'arabigo' (2., 2.1…).
-# capitulo_inicial: número del primer capítulo (el ítem 1 es la portada).
+# capitulo_inicial: número del primer capítulo (la portada e índice ocupan la primera sección).
 numeracion: arabigo
 capitulo_inicial: 2
